@@ -11,6 +11,9 @@
 |
 */
 
+use App\Http\Controllers\MaintenanceController;
+use GuzzleHttp\Middleware;
+
 Route::get('/', function () {
     return view('welcome');
 });
@@ -18,6 +21,11 @@ Route::get('/', function () {
 Route::get('/ibnrochd', function () {
     return "erreur!!";
 })->name('ibnrochd');
+
+
+Route::get('/mnt', function () {
+    return "Notre site web est en maintenance";
+})->name('mnt');
 
 //avec paramétre obligatoire
 Route::get('/commande/{x}', function ($x) {
@@ -52,8 +60,23 @@ route::get('/fournisseurs', 'FournisseurController@index')->name('fournisseurs')
 Route::get('/ibnrochd{$x}', function ($x) {
     return "erreur numéro $x!!";
 })->name('ibnrochd');
-*/
+
 Route::get('/client/{x?}', function ($x = 1) {
     if ($x > 3) return redirect()->route('ibnrochd', ['x' => 20]);
     return "le semestre recherché est le numéro $x";
 });
+*/
+
+
+Route::get('/admin', function () {
+    return "console d'administrateur";
+})->middleware('heure');
+
+/*
+
+Route::get('/admin', function () {
+    return "console d'administrateur";
+})->middleware(\App\Http\Middleware\HeureMiddleware ::class);
+*/
+
+Route::get('/admin2', ['middleware' => 'heure2:23', 'uses' => 'adminController@index']);
