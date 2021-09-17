@@ -54,8 +54,9 @@ Route::get('/article/{x}-{y}', function ($x, $y) {
 });
 
 //exemple avec controlleur
-route::get('/fournisseurs', 'FournisseurController@index')->name('fournisseurs');
+//route::get('/fournisseurs', 'FournisseurController@index')->name('fournisseurs');
 
+Route::get('/clients', ['middleware' => 'TestMiddleware', 'uses' => 'ClientController@liste'])->name('clients');
 /*
 Route::get('/ibnrochd{$x}', function ($x) {
     return "erreur numéro $x!!";
@@ -80,3 +81,13 @@ Route::get('/admin', function () {
 */
 
 Route::get('/admin2', ['middleware' => 'heure2:23', 'uses' => 'adminController@index']);
+
+Route::resource('/fournisseurs', 'FournisseurController');
+
+Route::resource('/fourn', 'FournisseurController')->only(['index', 'show']);
+
+Route::resource('/four', 'FournisseurController')->except(['create', 'store']);
+
+Route::apiResource('/cmd', 'CommandeController');
+
+Route::apiResources(['/cmd1', 'CommandeController']);
