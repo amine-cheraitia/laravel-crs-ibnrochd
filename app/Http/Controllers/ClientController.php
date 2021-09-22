@@ -8,10 +8,10 @@ class ClientController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('TestMiddleware');
+        //$this->middleware('TestMiddleware');
     }
     public function liste()
     {
-        return " la liste de(s) client(s)";
+        return view('client');
     }
 }
