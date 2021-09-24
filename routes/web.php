@@ -110,3 +110,4 @@ Route::get('/res', 'ReponseController@index');
 Route::view("/login", "login");
 
 Route::view("/form", "form");
+Route::view("/index", "index");
