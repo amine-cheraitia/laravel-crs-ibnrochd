@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Rules\Arabe;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
@@ -49,5 +50,20 @@ class RequeteController extends Controller
         $response->withCookie(cookie('etm', $nom, 30 * 60));
         return $response;
         //$response->withCookie(cookie()->forever('etm', $nom, 30 * 60));
+    }
+
+    public function createUser(Request $request)
+    {
+        $request->validate([
+            'nomL' => "required",
+            'nomA' =>  ["required", new Arabe],
+            'email' => "required",
+            'age' => "numeric|min:18",
+            'salaire' => 'numeric|between:18000,108000',
+            'mdp' => "required|confirmed",
+            'mdp_confirmation' => "required"
+        ]);
+
+        return "Utilisateur crée avec succée";
     }
 }
