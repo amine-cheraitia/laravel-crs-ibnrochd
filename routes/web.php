@@ -114,3 +114,6 @@ Route::view("/index", "index");
 
 Route::view('/valid', 'FormulaireValidation');
 Route::post('/valid', 'RequeteController@createUser')->name('valid');
+
+Route::get("/session", function () {
+});
