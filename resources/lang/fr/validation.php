@@ -141,6 +141,7 @@ return [
             "required" => "Le champ email est obligatoire",
         ],
         'age' => [
+            "numeric" => "doit être composer de chiffre",
             "min" => "L'age minimum est 18 ans",
         ],
         'salaire' => [

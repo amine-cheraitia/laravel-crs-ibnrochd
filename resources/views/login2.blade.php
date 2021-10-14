@@ -13,3 +13,12 @@
     </form>
 </body>
 @lang('message.wlc',['nom'=>$nom])
+
+
+@php
+    $nomClient= \Illuminate\Support\Facades\Session::pull('cl1');
+@endphp
+ <br>
+ nom du client1 :{{$nomClient}} <br>
+ nom du client2 :{{session("cl2")}}
+

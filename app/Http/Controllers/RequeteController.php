@@ -27,6 +27,7 @@ class RequeteController extends Controller
         */
         //$nom = $request->input('nom', '-');
         $nom = $request->nom;
+        $request->session()->put('xxx', $nom);
         //return $nom;
         //return $request->all();
         //return $request->input('zz.nom');
@@ -63,6 +64,8 @@ class RequeteController extends Controller
             'mdp' => "required|confirmed",
             'mdp_confirmation' => "required"
         ]);
+
+
 
         return "Utilisateur crée avec succée";
     }

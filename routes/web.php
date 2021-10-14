@@ -117,3 +117,8 @@ Route::post('/valid', 'RequeteController@createUser')->name('valid');
 
 Route::get("/session", function () {
 });
+
+
+/* Route::view('/logclient', 'login2'); */
+Route::post('/logclient', 'ClientController@sessionClient');
+Route::get('/logclient', 'ClientController@index');

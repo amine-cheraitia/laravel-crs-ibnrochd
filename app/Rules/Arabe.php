@@ -35,6 +35,6 @@ class Arabe implements Rule
      */
     public function message()
     {
-        return 'doit étre composer de lettre arabe.';
+        return 'le champ nom arabe doit étre composer de caractères arabes seulement.';
     }
 }

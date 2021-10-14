@@ -9,7 +9,7 @@
 </head>
 <body style="height: 100%" class="bg-dark d-flex align-items-center justify-content-center bg-light pt-5">
     <div class="container-fluid d-flex flex-column align-items-center justify-content-center bg-dark" style="min-height:100%;overflow:hidden">
-        @if ($errors->any())
+@if ($errors->any())
     <div class="alert alert-danger">
         <ul>
             @foreach ($errors->all() as $error)
