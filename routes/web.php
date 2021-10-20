@@ -122,3 +122,45 @@ Route::get("/session", function () {
 /* Route::view('/logclient', 'login2'); */
 Route::post('/logclient', 'ClientController@sessionClient');
 Route::get('/logclient', 'ClientController@index');
+
+Route::get('insert', function () {
+    DB::insert('insert into clients (nom, adresse) values (?, ?)', ['Amine', 'Cité Bachdjerrah']);
+});
+
+Route::get('insertEnt', function () {
+    DB::table('commandes')->insert(['date_commande' => '2021/10/18', 'id_client' => 2]);
+    /*     $id = DB::table('commandes')->insertGetId(['date_commande' => '2021/10/18', 'id_client' => 2]);
+    return "id = $id" */
+});
+
+Route::get('/maj', function () {
+    DB::update("update clients set nom = ?, adresse = ? where id = ?", ['ahmed', 'reghaia', 2]);
+});
+
+Route::get('/update', function () {
+    DB::table('clients')->where('id', 1)->update(['nom' => 'Mohamed Amine', 'adresse' => 'achour', 'updated_at' => date('Y-m-d H:i:s')]);
+});
+
+Route::get('/delete', function () {
+    DB::delete('delete from clients where id = ?', [5]);
+});
+
+Route::get('/sup', function () {
+    DB::table('clients')->where('id', 4)->delete();
+});
+
+Route::get('/agg', function () {
+    $all = [
+        'min' => DB::table('commandes')->min('date_commande'),
+        'totalClient' =>  DB::table('clients')->count(),
+        'max' =>  DB::table('commandes')->max('date_commande')
+    ];
+    dd($all);
+});
+
+/* $r = DB::table('clients')->skip(1)->take(1)->get(); */
+
+Route::get('/select', function () {
+    $r = DB::table('clients')->whereNull('updated_at')->get();
+    dd($r);
+});
