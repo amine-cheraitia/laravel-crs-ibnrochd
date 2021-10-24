@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Client;
 use Illuminate\Http\Request;
 
 class ClientController extends Controller
@@ -12,7 +13,39 @@ class ClientController extends Controller
     }
     public function liste()
     {
-        return view('client');
+        $clients = Client::whereRaw(" nom LIKE ? ", ['%h%'])->get();
+        return view('client.liste', ['clients' => $clients]);
+    }
+
+    public function create(Request $request)
+    {
+        $client = new Client;
+        $client->nom = 'salim';
+        $client->fill(['adresse' => 'cheraga', 'chiffre_affaire' => 1000000]);
+        $client->save();
+        return 'clien crée avec succée';
+    }
+
+    public function update(Request $request)
+    {
+        $client =  Client::find(2);
+        $client->update(['nom' => 'khaled', 'adresse' => 'kouba']);
+        $client->touch();
+        return 'clien mise à jour avec succée';
+    }
+
+    public function withdeleted(Request $request)
+    {
+        $clients = Client::onlyTrashed()->whereId(3)->first();
+        $clients->forceDelete();
+        return 'client supprimé';
+    }
+
+
+    public function delete(Request $request)
+    {
+        Client::destroy([5, 3]);
+        return 'clien supprimé temporairement';
     }
 
     public function sessionClient(Request $request)

@@ -17,6 +17,7 @@ class CreateClientsTable extends Migration
             $table->increments('id');
             $table->string('nom');
             $table->longText('adresse');
+            $table->softDeletes('deleted_at');
             $table->timestamps();
         });
     }

@@ -158,9 +158,11 @@ Route::get('/agg', function () {
     dd($all);
 });
 
-/* $r = DB::table('clients')->skip(1)->take(1)->get(); */
+/* $r = DB::table('clients')->skip(1)->take(1)->get();
+    $r = DB::table('commandes')->select(['id_client', DB::raw('count(*) as nombre')])->groupBy('id_client')
+    ->having('nombre', '>=', 2)->get();*/
 
 Route::get('/select', function () {
-    $r = DB::table('clients')->whereNull('updated_at')->get();
+    $r = DB::table('clients')->join('commandes', 'commandes.id_client', '=', 'clients.id')->get();
     dd($r);
 });
