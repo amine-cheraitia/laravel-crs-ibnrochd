@@ -175,3 +175,4 @@ Route::get('/1aN', 'RelationController@unAplusieurs');
 Route::get('/1aNr', 'RelationController@unAplusieursRecherche');
 Route::get('/1aNall', 'RelationController@unAplusieursAll');
 Route::get('/mtm', 'RelationController@plusieursAplusieurs');
+Route::get('/hmt', 'RelationController@plusieursVia');

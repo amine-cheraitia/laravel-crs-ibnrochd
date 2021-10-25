@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Client;
 use App\Commande;
 use App\Compte;
+use App\Wilaya;
 use Carbon\Carbon;
 use Doctrine\DBAL\Driver\SQLSrv\LastInsertId;
 use GuzzleHttp\Promise\Create;
@@ -67,4 +68,14 @@ class RelationController extends Controller
     //$commande->produits()->sync([1 => ["quantité_commandé" => 9], 2 => ["quantité_commandé" => 9]]);
     //$commande->produits()->attach([1 => ['quantité_commandé' => 3], 3 => ['quantité_commandé' => 2]]);
     //$commande->produits()->detach(1);
+
+    public function plusieursVia()
+    {
+        $wilaya = Wilaya::find(2);
+        $consultations = "<h2>les consultations de tout les patients du wilaya de $wilaya->designation</h2> <br>";
+        foreach ($wilaya->consultations as $consultation) {
+            $consultations .= "consultation N° " . $consultation->numero . '<br>';
+        }
+        return $consultations;
+    }
 }

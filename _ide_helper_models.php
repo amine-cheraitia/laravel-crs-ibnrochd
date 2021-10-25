@@ -89,6 +89,54 @@ namespace App{
 
 namespace App{
 /**
+ * App\Consultation
+ *
+ * @property int $id
+ * @property int $numero
+ * @property string $date_consultation
+ * @property int|null $id_patient
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \App\Patient|null $patient
+ * @method static \Illuminate\Database\Eloquent\Builder|Consultation newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Consultation newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Consultation query()
+ * @method static \Illuminate\Database\Eloquent\Builder|Consultation whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Consultation whereDateConsultation($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Consultation whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Consultation whereIdPatient($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Consultation whereNumero($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Consultation whereUpdatedAt($value)
+ */
+	class Consultation extends \Eloquent {}
+}
+
+namespace App{
+/**
+ * App\Patient
+ *
+ * @property int $id
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property int|null $id_wilaya
+ * @property string $nom
+ * @property string $prenom
+ * @property-read \App\Wilaya|null $wilaya
+ * @method static \Illuminate\Database\Eloquent\Builder|Patient newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Patient newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Patient query()
+ * @method static \Illuminate\Database\Eloquent\Builder|Patient whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Patient whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Patient whereIdWilaya($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Patient whereNom($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Patient wherePrenom($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Patient whereUpdatedAt($value)
+ */
+	class Patient extends \Eloquent {}
+}
+
+namespace App{
+/**
  * App\Produit
  *
  * @property int $id
@@ -138,5 +186,26 @@ namespace App{
  * @method static \Illuminate\Database\Eloquent\Builder|User whereUpdatedAt($value)
  */
 	class User extends \Eloquent {}
+}
+
+namespace App{
+/**
+ * App\Wilaya
+ *
+ * @property int $id
+ * @property string $designation
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Consultation[] $consultations
+ * @property-read int|null $consultations_count
+ * @method static \Illuminate\Database\Eloquent\Builder|Wilaya newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Wilaya newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Wilaya query()
+ * @method static \Illuminate\Database\Eloquent\Builder|Wilaya whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Wilaya whereDesignation($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Wilaya whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Wilaya whereUpdatedAt($value)
+ */
+	class Wilaya extends \Eloquent {}
 }
 
