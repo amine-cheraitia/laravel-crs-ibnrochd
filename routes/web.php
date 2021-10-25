@@ -170,3 +170,8 @@ Route::get('/select', function () {
 
 Route::get('/1a1', 'RelationController@unAun');
 Route::get('/create', 'RelationController@create');
+
+Route::get('/1aN', 'RelationController@unAplusieurs');
+Route::get('/1aNr', 'RelationController@unAplusieursRecherche');
+Route::get('/1aNall', 'RelationController@unAplusieursAll');
+Route::get('/mtm', 'RelationController@plusieursAplusieurs');

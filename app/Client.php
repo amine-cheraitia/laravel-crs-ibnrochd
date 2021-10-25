@@ -17,10 +17,15 @@ class Client extends Model
     use SoftDeletes;
     protected $dates = ['deleted_at'];
     protected $timesstamps = false;
-    protected $dateFormat = 'Y/m/d H:i:s';
+    //protected $dateFormat = 'Y/m/d H:i:s';
 
     public function compte()
     {
         return $this->belongsTo('App\Compte', 'id_compte');
+    }
+
+    public function commandes()
+    {
+        return $this->hasMany('App\Commande', 'id_client');
     }
 }
