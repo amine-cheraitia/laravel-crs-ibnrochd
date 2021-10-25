@@ -12,10 +12,15 @@ class Client extends Model
     protected $primaryKey = "id";
 
     protected $guarded = [];
-    protected $fillable = [];
+    //protected $fillable = [];
     protected $hidden = [];
     use SoftDeletes;
     protected $dates = ['deleted_at'];
     protected $timesstamps = false;
     protected $dateFormat = 'Y/m/d H:i:s';
+
+    public function compte()
+    {
+        return $this->belongsTo('App\Compte', 'id_compte');
+    }
 }

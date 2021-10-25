@@ -20,6 +20,8 @@ namespace App{
  * @property \Illuminate\Support\Carbon|null $deleted_at
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property int $id_compte
+ * @property-read \App\Compte $compte
  * @method static \Illuminate\Database\Eloquent\Builder|Client newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Client newQuery()
  * @method static \Illuminate\Database\Query\Builder|Client onlyTrashed()
@@ -28,12 +30,35 @@ namespace App{
  * @method static \Illuminate\Database\Eloquent\Builder|Client whereCreatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Client whereDeletedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Client whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Client whereIdCompte($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Client whereNom($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Client whereUpdatedAt($value)
  * @method static \Illuminate\Database\Query\Builder|Client withTrashed()
  * @method static \Illuminate\Database\Query\Builder|Client withoutTrashed()
  */
 	class Client extends \Eloquent {}
+}
+
+namespace App{
+/**
+ * App\Compte
+ *
+ * @property int $id
+ * @property string $username
+ * @property string $password
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \App\Client|null $client
+ * @method static \Illuminate\Database\Eloquent\Builder|Compte newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Compte newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Compte query()
+ * @method static \Illuminate\Database\Eloquent\Builder|Compte whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Compte whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Compte wherePassword($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Compte whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Compte whereUsername($value)
+ */
+	class Compte extends \Eloquent {}
 }
 
 namespace App{

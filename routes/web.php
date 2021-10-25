@@ -166,3 +166,7 @@ Route::get('/select', function () {
     $r = DB::table('clients')->join('commandes', 'commandes.id_client', '=', 'clients.id')->get();
     dd($r);
 });
+
+
+Route::get('/1a1', 'RelationController@unAun');
+Route::get('/create', 'RelationController@create');
