@@ -11,8 +11,9 @@
 |
 */
 
-use App\Http\Controllers\MaintenanceController;
+use App\User;
 use GuzzleHttp\Middleware;
+use App\Http\Controllers\MaintenanceController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -75,7 +76,7 @@ view()->share('wilaya', ['telmcen', 'alger', 'bejaia']);
 
 Route::get('/admin', function () {
     return "console d'administrateur";
-})->middleware('heure');
+})->middleware('heure')->name('admin');
 
 /*
 
@@ -188,6 +189,13 @@ Route::get('/info', function () {
     Auth::loginUsingId(1);
     return redirect()->intended('home');
 });
+
+Route::get('/dsi', function () {
+    return "Vous etes autoriser";
+})->middleware('dsi');
+
+
+
 /*
     if (Auth::attempt(['email' => 'amine-cheraitia@hotmail.com', 'password' => "azerty"])) {
         return redirect()->intended('home');

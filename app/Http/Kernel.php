@@ -64,7 +64,8 @@ class Kernel extends HttpKernel
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
         'heure' => \App\Http\Middleware\HeureMiddleware::class,
         'heure2' => \App\Http\Middleware\HeureMiddleware2::class,
-        'TestMiddleware' => \App\Http\Middleware\TestMiddleware::class
+        'TestMiddleware' => \App\Http\Middleware\TestMiddleware::class,
+        'dsi' => \App\Http\Middleware\DSIMiddleware::class
     ];
 
     /**
