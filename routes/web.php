@@ -171,8 +171,42 @@ Route::get('/select', function () {
 Route::get('/1a1', 'RelationController@unAun');
 Route::get('/create', 'RelationController@create');
 
-Route::get('/1aN', 'RelationController@unAplusieurs');
+Route::get('/1aN', 'RelationController@unAplusieurs')->middleware('auth');
 Route::get('/1aNr', 'RelationController@unAplusieursRecherche');
 Route::get('/1aNall', 'RelationController@unAplusieursAll');
 Route::get('/mtm', 'RelationController@plusieursAplusieurs');
 Route::get('/hmt', 'RelationController@plusieursVia');
+Auth::routes(['register' => false]);
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+/* Route::get('/info', function () {
+    return Auth::user() . ' ' . Auth::id();
+}); */
+
+Route::get('/info', function () {
+    Auth::loginUsingId(1);
+    return redirect()->intended('home');
+});
+/*
+    if (Auth::attempt(['email' => 'amine-cheraitia@hotmail.com', 'password' => "azerty"])) {
+        return redirect()->intended('home');
+    } else {
+        return "Erreur d'authenfication";
+    } */
+Route::get('/maillog', function () {
+
+    Auth::login('App\User'::whereEmail('amine-cheraitia@hotmail.com')->first());
+    return redirect()->intended('home');
+});
+
+Route::get('/logout', function () {
+    Auth::logout();
+});
+
+
+    /* if (Auth::check()) {
+        return Auth::user()->name . " est connecté";
+    } else {
+        return "Aucun utilisateur n'est connecté";
+    } */
