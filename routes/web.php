@@ -213,8 +213,17 @@ Route::get('/logout', function () {
 });
 
 
-    /* if (Auth::check()) {
+/* if (Auth::check()) {
         return Auth::user()->name . " est connecté";
     } else {
         return "Aucun utilisateur n'est connecté";
     } */
+
+
+Route::get('/ajax', function () {
+    return view('ajax');
+});
+
+Route::post('/ajax', function () {
+    return response()->json(['client' => App\Client::all()], 200);
+});
