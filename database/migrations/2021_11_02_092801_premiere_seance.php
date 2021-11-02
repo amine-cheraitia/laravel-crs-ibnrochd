@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateConsultationsTable extends Migration
+class PremiereSeance extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateConsultationsTable extends Migration
      */
     public function up()
     {
-        /*    Schema::create('patients', function (Blueprint $table) {
+        Schema::create('patients', function (Blueprint $table) {
             $table->increments('id');
             $table->string('nom');
             $table->string('prenom');
@@ -26,7 +26,8 @@ class CreateConsultationsTable extends Migration
 
         Schema::create('consultations', function (Blueprint $table) {
             $table->increments('id');
-            $table->dateTime('date_et_heure');
+            $table->date('date');
+            $table->integer('heure');
             $table->text('symptomes');
             $table->string('resultat');
             $table->decimal('poids', 5, 2);
@@ -35,7 +36,7 @@ class CreateConsultationsTable extends Migration
             $table->boolean('prends_medicaments');
             $table->unsignedInteger('id_patient')->nullable();
             $table->foreign('id_patient')->references('id')->on('patients');
-        }); */
+        });
     }
 
     /**
@@ -45,7 +46,7 @@ class CreateConsultationsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('patients');
         Schema::dropIfExists('consultations');
+        Schema::dropIfExists('patients');
     }
 }
